@@ -1,0 +1,21 @@
+buildscript {
+    def local = new Properties()
+    def config = file('local.properties')
+    def setupHelp = 'software/atak-plugin/README.md の 2 章に従って local.properties を用意してください。'
+    if (!config.isFile()) {
+        throw new GradleException("local.properties がありません。${setupHelp}")
+    }
+    config.withInputStream { local.load(it) }
+    def takdevPath = local.getProperty('jtak.takdev.jar')
+    if (!takdevPath?.trim() || !file(takdevPath).isFile()) {
+        throw new GradleException("jtak.takdev.jar に既存の jar ファイルを指定してください。${setupHelp}")
+    }
+    repositories { google(); mavenCentral() }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.13.0'
+        classpath files(takdevPath)
+    }
+}
+allprojects {
+    repositories { google(); mavenCentral() }
+}

@@ -1,0 +1,200 @@
+<resources>
+    <string name="app_name" translatable="false">JTAK</string>
+    <string name="app_desc" translatable="false">JTAK — TRAINING USE ONLY / 訓練用</string>
+    <string name="lrf_title">LRF range point auto-marking</string>
+    <string name="lrf_auto_switch">Auto-marking (ATAK LRF link)</string>
+    <string name="lrf_manual_title">Manual entry</string>
+    <string name="lrf_distance_hint">Distance (m)</string>
+    <string name="lrf_azimuth_hint">Azimuth (°)</string>
+    <string name="lrf_elevation_hint">Elevation angle (°, up is positive)</string>
+    <string name="lrf_ref_magnetic">Magnetic</string>
+    <string name="lrf_ref_true">True</string>
+    <string name="lrf_place_button">Place point</string>
+    <string name="lrf_input_error">Point not placed: a field is not a number</string>
+    <string name="mode_lrf" translatable="false">LRF</string>
+    <string name="mode_cas" translatable="false">9-line</string>
+    <string name="cas_title">CAS 9-line and Remarks (JP 3-09.3 2014 Fig. V-9)</string>
+    <string name="cas_point_ip">IP/BP point</string>
+    <string name="cas_point_target">Target point</string>
+    <string name="cas_point_friendly">Friendly point</string>
+    <string name="cas_type_ip">IP (distance in NM)</string>
+    <string name="cas_type_bp">BP (distance in m)</string>
+    <string name="cas_none">(none)</string>
+    <string name="cas_refresh_button">Reload point list</string>
+    <string name="cas_fill_button">Fill from map points</string>
+    <string name="cas_make_button">Make</string>
+    <string name="cas_fill_missing">Lines not filled: %1$s</string>
+    <string name="cas_fill_done">Filled from map points</string>
+    <string name="cas_points_count">Map points: %1$d</string>
+    <string name="cas_missing_lines">Lines not entered: %1$s</string>
+    <string name="cas_line1">1 IP/BP (point name)</string>
+    <string name="cas_line2">2 Heading (magnetic, 3 digits)</string>
+    <string name="cas_line3">3 Distance (IP: NM, BP: meters)</string>
+    <string name="cas_line4">4 Target elevation (feet)</string>
+    <string name="cas_line5">5 Target description</string>
+    <string name="cas_line6">6 Target location (MGRS)</string>
+    <string name="cas_line7" translatable="false">7 Type mark / Terminal guidance</string>
+    <string name="cas_line8">8 Location of friendlies (direction and distance)</string>
+    <string name="cas_line9" translatable="false">9 Egress</string>
+    <string name="cas_offset">Offset (left / right)</string>
+    <string name="cas_remarks_title" translatable="false">Remarks</string>
+    <string name="cas_ltl_ptl" translatable="false">LTL/PTL</string>
+    <string name="cas_ordnance" translatable="false">Ordnance / Effects</string>
+    <string name="cas_threat" translatable="false">Threat / SEAD</string>
+    <string name="cas_additional_remarks" translatable="false">Additional remarks</string>
+    <string name="cas_additional_calls" translatable="false">Additional calls</string>
+    <string name="choice_none">(none)</string>
+    <string name="missing_items">Items not entered: %1$s</string>
+    <string name="mode_routing" translatable="false">Routing</string>
+    <string name="mode_checkin" translatable="false">Check-in</string>
+    <string name="mode_gameplan" translatable="false">Game plan</string>
+    <string name="routing_title">Routing (JP 3-09.3 2014 Fig. V-3)</string>
+    <string name="routing_conflict">\"You are the only aircraft on station\" and \"Other AOS\" cannot both be entered. Leave one empty.</string>
+    <string name="routing_fill_done">Put the map point name in the place field</string>
+    <string name="routing_fill_none">Select a point</string>
+    <string name="routing_point">Point for the place</string>
+    <string name="routing_callsign">Aircraft callsign</string>
+    <string name="routing_instruction">Routing / Holding instruction</string>
+    <string name="routing_instr_proceed" translatable="false">Proceed … and report established</string>
+    <string name="routing_instr_maintain" translatable="false">Maintain …</string>
+    <string name="routing_instr_report_passing" translatable="false">Report passing …</string>
+    <string name="routing_place">Place (point name, altitude, etc.)</string>
+    <string name="routing_other_instructions" translatable="false">Other instructions</string>
+    <string name="routing_only_aircraft" translatable="false">You are the only aircraft on station</string>
+    <string name="routing_other_aos">Other AOS (other aircraft)</string>
+    <string name="routing_threats" translatable="false">Immediate threats</string>
+    <string name="routing_weather_terrain" translatable="false">Significant weather/terrain</string>
+    <string name="routing_status_calls" translatable="false">Status calls</string>
+    <string name="routing_closing">Closing instruction</string>
+    <string name="routing_closing_send" translatable="false">Send your check-in</string>
+    <string name="routing_closing_hold" translatable="false">Hold your check-in</string>
+    <string name="routing_hold_reason">Hold reason (optional, no period at the end)</string>
+    <string name="checkin_title">Check-in (JP 3-09.3 2014 Fig. V-4)</string>
+    <string name="checkin_conflict">An abort code and \"No abort code\" cannot both be entered. Leave one empty.</string>
+    <string name="checkin_jtac_callsign" translatable="false">JTAC callsign</string>
+    <string name="checkin_aircraft_callsign" translatable="false">Aircraft callsign</string>
+    <string name="checkin_mode">Format</string>
+    <string name="checkin_mode_full">Full (all items)</string>
+    <string name="checkin_mode_as_fragged" translatable="false">As fragged</string>
+    <string name="checkin_mode_with_exception" translatable="false">As fragged, with exception</string>
+    <string name="checkin_mission_number" translatable="false">1 Mission number</string>
+    <string name="checkin_aircraft" translatable="false">2 Number and type of aircraft</string>
+    <string name="checkin_position_altitude" translatable="false">3 Position and altitude</string>
+    <string name="checkin_ordnance" translatable="false">4 Ordnance</string>
+    <string name="checkin_playtime" translatable="false">5 Playtime</string>
+    <string name="checkin_capabilities" translatable="false">6 Capabilities</string>
+    <string name="checkin_abort_code" translatable="false">7 Abort code</string>
+    <string name="checkin_abort_code_none">No abort code (ABORT, ABORT, ABORT)</string>
+    <string name="gameplan_title">Game plan (JP 3-09.3 2014 Fig. V-9)</string>
+    <string name="gameplan_callsign" translatable="false">Aircraft callsign</string>
+    <string name="gameplan_type" translatable="false">Type of control</string>
+    <string name="gameplan_type_1" translatable="false">Type 1</string>
+    <string name="gameplan_type_2" translatable="false">Type 2</string>
+    <string name="gameplan_type_3" translatable="false">Type 3</string>
+    <string name="gameplan_note">Type and BOT/BOC are chosen separately (any combination). Training summary.</string>
+    <string name="gameplan_type_1_desc">Type 1: the controller visually acquires the target and the attacking aircraft in the terminal phase and controls each attack</string>
+    <string name="gameplan_type_2_desc">Type 2: the controller reduces risk by means other than visual and controls each attack</string>
+    <string name="gameplan_type_3_desc">Type 3: the controller reduces risk by means other than visual and clears multiple attacks within one engagement</string>
+    <string name="gameplan_method" translatable="false">Method of attack</string>
+    <string name="gameplan_method_bot">BOT (bomb on target)</string>
+    <string name="gameplan_method_boc">BOC (bomb on coordinate)</string>
+    <string name="gameplan_bot_desc">BOT: the aircraft acquires the target or aim point itself</string>
+    <string name="gameplan_boc_desc">BOC: the aircraft attacks the coordinates given in the CAS Brief</string>
+    <string name="gameplan_intent" translatable="false">Attack intent</string>
+    <string name="gameplan_collateral" translatable="false">CDE concerns</string>
+    <string name="gameplan_ordnance" translatable="false">Ordnance</string>
+    <string name="gameplan_effects" translatable="false">Desired effects</string>
+    <string name="gameplan_fuzing" translatable="false">Fuzing</string>
+    <string name="gameplan_interval" translatable="false">Interval</string>
+    <string name="gameplan_line6_digits">Line 6 digits</string>
+    <string name="restrictions_title" translatable="false">Restrictions</string>
+    <string name="restrictions_danger_close" translatable="false">Danger close</string>
+    <string name="restrictions_initials">Danger close: commander\'s initials</string>
+    <string name="restrictions_acas" translatable="false">ACAs</string>
+    <string name="restrictions_fahs" translatable="false">FAHs</string>
+    <string name="restrictions_separation" translatable="false">Separation</string>
+    <string name="restrictions_rw_out_of_bp" translatable="false">RW approval out of BP</string>
+    <string name="restrictions_pla" translatable="false">PLA</string>
+    <string name="restrictions_tot">TOT format</string>
+    <string name="restrictions_tot_time">TOT time</string>
+    <string name="restrictions_tot_time_option">TOT (enter a time)</string>
+    <string name="restrictions_tot_standby" translatable="false">Standby TOT</string>
+    <string name="restrictions_tot_after_correlation" translatable="false">TOT will be issued after correlation</string>
+    <string name="restrictions_tot_push" translatable="false">Push when ready</string>
+    <string name="restrictions_conflict">The Restrictions entries conflict (initials only with Danger close; a TOT time only when \"TOT format\" is a time)</string>
+    <string name="restrictions_missing">Restrictions not entered: %1$s</string>
+    <string name="mode_weapons" translatable="false">RED</string>
+    <string name="weapons_title">Risk-estimate distance (RED) (TRAINING)</string>
+    <string name="weapons_table_default">Table: default (no file)</string>
+    <string name="weapons_table_file">Table: file (%1$d rows)</string>
+    <string name="weapons_table_invalid">The table file is invalid, so the default table is used</string>
+    <string name="weapons_more_errors">%1$d more</string>
+    <string name="weapons_target">Target point</string>
+    <string name="weapons_refresh">Refresh point list</string>
+    <string name="weapons_row">Weapon row</string>
+    <string name="weapons_draw">Draw</string>
+    <string name="weapons_erase">Erase</string>
+    <string name="weapons_no_target">Select a target point</string>
+    <string name="weapons_no_row">The table has no rows</string>
+    <string name="weapons_friendly_title">Friendly points inside the RED circles:</string>
+    <string name="weapons_friendly_none">Friendly points inside the RED circles: none</string>
+    <string name="weapons_friendly_hit">%1$s — %2$s (%3$d m)</string>
+    <string name="weapons_unknown">Points with unknown distance: %1$d</string>
+    <string name="weapons_erased">Circles erased: %1$d</string>
+    <string name="weapons_edit_title">Edit table</string>
+    <string name="weapons_edit_label">Label</string>
+    <string name="weapons_ring1_name">Ring 1 name</string>
+    <string name="weapons_ring1_radius">Ring 1 radius (m)</string>
+    <string name="weapons_ring2_name">Ring 2 name (leave empty if not used)</string>
+    <string name="weapons_ring2_radius">Ring 2 radius (m)</string>
+    <string name="weapons_ring3_name">Ring 3 name (leave empty if not used)</string>
+    <string name="weapons_ring3_radius">Ring 3 radius (m)</string>
+    <string name="weapons_edit_note">Note</string>
+    <string name="weapons_save_row">Save row</string>
+    <string name="weapons_add_row">Add row</string>
+    <string name="weapons_delete_row">Delete row</string>
+    <string name="weapons_reset_table">Reset to default table</string>
+    <string name="weapons_reload">Reload</string>
+    <string name="weapons_new_row_label">New row</string>
+    <string name="weapons_new_ring_name">Inner</string>
+    <string name="weapons_saved">Saved</string>
+    <string name="weapons_save_failed">Could not save the table: %1$s</string>
+    <string name="weapons_errors_title">Fix the entries:</string>
+    <string name="weapons_delete_confirm">Delete %1$s</string>
+    <string name="weapons_reset_confirm">Reset the table to the 3 default rows. The current rows will be removed.</string>
+    <string name="weapons_ok">OK</string>
+    <string name="weapons_cancel">Cancel</string>
+    <string name="weapons_unit_m" translatable="false">%1$s %2$d m</string>
+    <string name="weapons_circle_title">TRAINING %1$s %2$s %3$d m</string>
+    <string name="weapons_circle_target">Target: %1$s</string>
+    <string name="weapons_group_name">JTAK TRAINING RED</string>
+    <string name="weapons_draw_failed">Could not draw the circles: %1$s</string>
+    <string name="weapons_erase_failed">Could not erase the circles: %1$s</string>
+    <string name="weapons_refresh_failed">Could not get the point list: %1$s</string>
+    <string name="weapons_kept_as">The previous file is kept as %1$s</string>
+    <string name="weapons_reason_read_failed">Could not read the table file: %1$s</string>
+    <string name="weapons_reason_too_large">The file is too large (limit %1$s bytes)</string>
+    <string name="weapons_reason_mkdir_failed">Cannot create the folder: %1$s</string>
+    <string name="weapons_reason_tmp_write_failed">Cannot write the temporary file: %1$s</string>
+    <string name="weapons_reason_rename_invalid_failed">Cannot rename the invalid file: %1$s</string>
+    <string name="weapons_reason_rename_failed">Cannot rename the file: %1$s</string>
+    <string name="export_text_button">Export text</string>
+    <string name="export_pdf_button">Export PDF</string>
+    <string name="export_share_title">Share the exported file</string>
+    <string name="export_saved">Exported: %1$s</string>
+    <string name="export_failed">Could not export: %1$s</string>
+    <string name="export_share_failed">Could not share. The file is in the save folder: %1$s</string>
+    <string name="jtak_lang">en</string>
+    <string name="export_reason_text_write">Could not write the text: %1$s</string>
+    <string name="export_reason_dir_create">Could not create the save folder: %1$s</string>
+    <string name="export_reason_dir_open">Could not open the save folder: %1$s</string>
+    <string name="export_reason_pdf_write">Could not write the PDF: %1$s</string>
+    <string name="import_button">Load from file</string>
+    <string name="import_dialog_title">File to load (.txt)</string>
+    <string name="import_read_failed">Could not read the file.</string>
+    <string name="import_confirm_message">Clear the current entries and load the file values. Items not in the file will be empty (default).</string>
+    <string name="import_confirm_ok">Clear and load</string>
+    <string name="import_confirm_cancel">Cancel</string>
+    <string name="import_skipped_items">Items not loaded: %1$s</string>
+    <string name="import_done">File loaded.</string>
+</resources>

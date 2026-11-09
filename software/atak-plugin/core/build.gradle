@@ -1,0 +1,12 @@
+plugins { id 'java-library' }
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+// オフライン配布物に同梱される JUnit 4 と Hamcrest を使う。
+// Use JUnit 4 and Hamcrest bundled with the offline distribution.
+dependencies {
+    testImplementation files("${gradle.gradleHomeDir}/lib/junit-4.13.2.jar")
+    testImplementation files("${gradle.gradleHomeDir}/lib/hamcrest-core-1.3.jar")
+}

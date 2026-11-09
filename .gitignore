@@ -1,0 +1,51 @@
+# ローカルのツールの作業ファイル
+.remember/
+.codex/worktrees/
+.tokensave/
+
+# 秘密情報（署名の鍵を含む）
+.env
+.env.*
+*.key
+*.pem
+*.keystore
+*.jks
+android_keystore
+secrets/
+
+# ATAK SDK（再配布しない。tools/sdk/setup-sdk.sh が out/sdk/ に展開する）
+*.jar
+*.aar
+!gradle/wrapper/gradle-wrapper.jar
+!software/atak-plugin/gradle/wrapper/gradle-wrapper.jar
+local.properties
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.iml
+*.swp
+*~
+
+# ビルド成果物
+out/
+build/
+.gradle/
+.kotlin/
+.cxx/
+captures/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+
+# 利用者が置く参考資料（実在のロゴの写しを含むため、リポジトリに入れない）
+reference/

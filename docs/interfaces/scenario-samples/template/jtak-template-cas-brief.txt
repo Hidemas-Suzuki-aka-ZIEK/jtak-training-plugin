@@ -1,0 +1,27 @@
+TRAINING USE ONLY / 訓練用
+CAS 9-LINE (JP 3-09.3 2014 Fig. V-9) / Datum: WGS 84
+[1-3]
+1 IP/BP: （未入力）
+2 Heading: （未入力）
+3 Distance: （未入力）
+[4-6]
+4 Target elevation: （未入力） (readback)
+5 Target description: （未入力）
+6 Target location: （未入力） (readback)
+[7-9]
+7 Type mark / Terminal guidance: （未入力）
+8 Location of friendlies: （未入力）
+9 Egress: （未入力）
+[Remarks]
+LTL/PTL: （未入力）
+Ordnance / Effects: （未入力）
+Threat / SEAD: （未入力）
+Additional remarks: （未入力）
+Additional calls: （未入力）
+[Restrictions]
+ACAs: （未入力） (readback)
+FAHs: （未入力） (readback)
+Separation: （未入力） (readback)
+RW approval out of BP: （未入力） (readback)
+PLA: （未入力） (readback)
+TRAINING USE ONLY / 訓練用

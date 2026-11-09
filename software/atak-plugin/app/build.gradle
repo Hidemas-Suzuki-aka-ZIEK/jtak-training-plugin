@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+ext.ATAK_VERSION = '5.8.0'
+ext.isDevKitEnabled = { false }
+ext.takrepoUrl = 'https://repo.maven.apache.org/maven2'
+ext.takrepoUser = ''
+ext.takrepoPassword = ''
+apply plugin: 'atak-takdev-plugin'
+// takdev 独自の NDK 取得も止め、CI 環境でもローカルの SDK だけを使う。
+// Also disable takdev's own NDK download and use only the local SDK in CI environments.
+tasks.matching { it.name == 'installRequiredNdk' }.configureEach { enabled = false }
+
+def local = new Properties()
+rootProject.file('local.properties').withInputStream { local.load(it) }
+def sdkJar = rootProject.file(local.getProperty('jtak.sdk.jar', 'missing-main.jar'))
+if (!sdkJar.isFile()) throw new GradleException('jtak.sdk.jar を local.properties に指定してください')
+
+android {
+    namespace 'jp.jtak.plugin'
+    compileSdk 36
+    buildToolsVersion '35.0.0'
+    defaultConfig {
+        applicationId 'jp.jtak.plugin'
+        minSdk 31
+        targetSdk 36
+        versionCode 1
+        versionName '0.1.0'
+        manifestPlaceholders = [atakApiVersion: 'com.atakmap.app@5.8.0.CIV']
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    signingConfigs.debug.storeFile = rootProject.file('../../out/atak-plugin/.android-home/debug.keystore')
+    buildTypes {
+        debug { minifyEnabled false }
+        release { minifyEnabled false }
+    }
+    bundle { storeArchive { enable = false } }
+    packaging { jniLibs.useLegacyPackaging = true }
+}
+dependencies {
+    implementation project(':core')
+    compileOnly files(sdkJar)
+}
