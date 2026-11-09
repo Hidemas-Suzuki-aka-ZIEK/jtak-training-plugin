@@ -1,0 +1,11 @@
+TRAINING USE ONLY / 訓練用
+CHECK-IN (JP 3-09.3 2014 Fig. V-4)
+OWL 21, this is KESTREL 11
+1 Mission number: TR0417
+2 Number and type of aircraft: 2 x strike fighter
+3 Position and altitude: IP PINE, 15000 ft MSL
+4 Ordnance: 4 x GBU-12, 2 x GBU-38, 2 x AGM-65
+5 Playtime: 45 minutes
+6 Capabilities: targeting pod, laser designator, IR pointer
+7 Abort code: BRAVO 7 (readback)
+TRAINING USE ONLY / 訓練用

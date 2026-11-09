@@ -1,0 +1,5 @@
+# このファイルを local.properties にコピーし、利用環境の絶対パスに直す。
+# Copy this file to local.properties and replace the paths with absolute paths for your environment.
+sdk.dir=/home/YOUR_USER/Android/Sdk
+jtak.takdev.jar=/ABSOLUTE/REPO/out/sdk/ATAK-CIV-5.8.0.9-SDK/atak-gradle-takdev.jar
+jtak.sdk.jar=/ABSOLUTE/REPO/out/sdk/ATAK-CIV-5.8.0.9-SDK/main.jar

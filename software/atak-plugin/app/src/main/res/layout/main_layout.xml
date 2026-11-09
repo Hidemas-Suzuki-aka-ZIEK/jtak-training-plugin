@@ -1,0 +1,323 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="12dp" android:paddingTop="0dp"
+    android:paddingRight="12dp" android:paddingBottom="12dp"
+    android:background="#20242A">
+    <TextView android:id="@+id/training_header"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:gravity="center" android:textColor="#FFD166" android:textSize="11sp" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:paddingTop="0dp">
+        <Button android:id="@+id/mode_lrf"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:textSize="12sp" android:minHeight="0dp" android:minWidth="0dp"
+            android:paddingLeft="4dp" android:paddingRight="4dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp" android:maxLines="1" android:ellipsize="end"
+            android:layout_weight="1" android:text="@string/mode_lrf" />
+        <Button android:id="@+id/mode_cas"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:textSize="12sp" android:minHeight="0dp" android:minWidth="0dp"
+            android:paddingLeft="4dp" android:paddingRight="4dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp" android:maxLines="1" android:ellipsize="end"
+            android:layout_weight="1" android:text="@string/mode_cas" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/mode_routing"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:textSize="12sp" android:minHeight="0dp" android:minWidth="0dp"
+            android:paddingLeft="4dp" android:paddingRight="4dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp" android:maxLines="1" android:ellipsize="end"
+            android:layout_weight="1" android:text="@string/mode_routing" />
+        <Button android:id="@+id/mode_checkin"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:textSize="12sp" android:minHeight="0dp" android:minWidth="0dp"
+            android:paddingLeft="4dp" android:paddingRight="4dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp" android:maxLines="1" android:ellipsize="end"
+            android:layout_weight="1" android:text="@string/mode_checkin" />
+        <Button android:id="@+id/mode_gameplan"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:textSize="12sp" android:minHeight="0dp" android:minWidth="0dp"
+            android:paddingLeft="4dp" android:paddingRight="4dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp" android:maxLines="1" android:ellipsize="end"
+            android:layout_weight="1" android:text="@string/mode_gameplan" />
+        <Button android:id="@+id/mode_weapons"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:textSize="12sp" android:minHeight="0dp" android:minWidth="0dp"
+            android:paddingLeft="4dp" android:paddingRight="4dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp" android:maxLines="1" android:ellipsize="end"
+            android:layout_weight="1" android:text="@string/mode_weapons" />
+    </LinearLayout>
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout android:id="@+id/lrf_section"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:paddingTop="4dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/lrf_title" android:textColor="#FFFFFF" android:textSize="15sp" />
+                <Switch android:id="@+id/lrf_auto_switch"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/lrf_auto_switch" android:textColor="#FFFFFF" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/lrf_manual_title" android:textColor="#FFFFFF" android:textSize="15sp" />
+                <EditText android:id="@+id/lrf_distance"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="@string/lrf_distance_hint" android:textColor="#FFFFFF"
+                    android:textColorHint="#9AA0A6" android:inputType="numberDecimal" />
+                <EditText android:id="@+id/lrf_azimuth"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="@string/lrf_azimuth_hint" android:textColor="#FFFFFF"
+                    android:textColorHint="#9AA0A6" android:inputType="numberDecimal" />
+                <RadioGroup android:id="@+id/lrf_reference"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/lrf_ref_magnetic"
+                        android:textSize="13sp"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:checked="true" android:text="@string/lrf_ref_magnetic"
+                        android:textColor="#FFFFFF" />
+                    <RadioButton android:id="@+id/lrf_ref_true"
+                        android:textSize="13sp"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/lrf_ref_true" android:textColor="#FFFFFF" />
+                </RadioGroup>
+                <EditText android:id="@+id/lrf_elevation"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="@string/lrf_elevation_hint" android:text="0"
+                    android:textColor="#FFFFFF" android:textColorHint="#9AA0A6"
+                    android:inputType="numberSigned|numberDecimal" />
+                <Button android:id="@+id/lrf_place"
+                    android:textSize="12sp" android:minHeight="0dp"
+                    android:paddingTop="12dp" android:paddingBottom="12dp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/lrf_place_button" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/cas_section"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:paddingTop="4dp"
+                android:visibility="gone">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/cas_title" android:textColor="#FFFFFF" android:textSize="15sp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/cas_point_ip" android:textColor="#FFFFFF" />
+                <Spinner android:id="@+id/cas_spinner_ip"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+                <RadioGroup android:id="@+id/cas_type"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/cas_type_ip"
+                        android:textSize="13sp"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:checked="true" android:text="@string/cas_type_ip"
+                        android:textColor="#FFFFFF" />
+                    <RadioButton android:id="@+id/cas_type_bp"
+                        android:textSize="13sp"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/cas_type_bp" android:textColor="#FFFFFF" />
+                </RadioGroup>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="@string/cas_point_target" android:textColor="#FFFFFF" />
+                <Spinner android:id="@+id/cas_spinner_target"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="@string/cas_point_friendly" android:textColor="#FFFFFF" />
+                <Spinner android:id="@+id/cas_spinner_friendly"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button android:id="@+id/cas_refresh"
+                        android:textSize="12sp" android:minHeight="0dp"
+                        android:paddingTop="12dp" android:paddingBottom="12dp"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="@string/cas_refresh_button" />
+                    <Button android:id="@+id/cas_fill"
+                        android:textSize="12sp" android:minHeight="0dp"
+                        android:paddingTop="12dp" android:paddingBottom="12dp"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="@string/cas_fill_button" />
+                </LinearLayout>
+                <TextView android:id="@+id/cas_fill_status"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFD166" />
+                <LinearLayout android:id="@+id/cas_fields"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+                <Button android:id="@+id/cas_make"
+                    android:textSize="12sp" android:minHeight="0dp"
+                    android:paddingTop="12dp" android:paddingBottom="12dp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp" android:text="@string/cas_make_button" />
+                <TextView android:id="@+id/cas_missing"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFD166" />
+                <TextView android:id="@+id/cas_result"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF" android:textIsSelectable="true"
+                    android:typeface="monospace" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button android:id="@+id/cas_export_text"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:enabled="false"
+                        android:textSize="12sp" android:text="@string/export_text_button" />
+                    <Button android:id="@+id/cas_export_pdf"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:enabled="false"
+                        android:textSize="12sp" android:text="@string/export_pdf_button" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/routing_section"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:paddingTop="4dp"
+                android:visibility="gone">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/routing_title" android:textColor="#FFFFFF" android:textSize="15sp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/routing_point" android:textColor="#FFFFFF" />
+                <Spinner android:id="@+id/routing_spinner_place"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button android:id="@+id/routing_refresh"
+                        android:textSize="12sp" android:minHeight="0dp"
+                        android:paddingTop="12dp" android:paddingBottom="12dp"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="@string/cas_refresh_button" />
+                    <Button android:id="@+id/routing_fill"
+                        android:textSize="12sp" android:minHeight="0dp"
+                        android:paddingTop="12dp" android:paddingBottom="12dp"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="@string/cas_fill_button" />
+                </LinearLayout>
+                <TextView android:id="@+id/routing_fill_status"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFD166" />
+                <LinearLayout android:id="@+id/routing_fields"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+                <Button android:id="@+id/routing_make"
+                    android:textSize="12sp" android:minHeight="0dp"
+                    android:paddingTop="12dp" android:paddingBottom="12dp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp" android:text="@string/cas_make_button" />
+                <TextView android:id="@+id/routing_missing"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFD166" />
+                <TextView android:id="@+id/routing_result"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF" android:textIsSelectable="true"
+                    android:typeface="monospace" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button android:id="@+id/routing_export_text"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:enabled="false"
+                        android:textSize="12sp" android:text="@string/export_text_button" />
+                    <Button android:id="@+id/routing_export_pdf"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:enabled="false"
+                        android:textSize="12sp" android:text="@string/export_pdf_button" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/checkin_section"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:paddingTop="4dp"
+                android:visibility="gone">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/checkin_title" android:textColor="#FFFFFF" android:textSize="15sp" />
+                <LinearLayout android:id="@+id/checkin_fields"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+                <Button android:id="@+id/checkin_make"
+                    android:textSize="12sp" android:minHeight="0dp"
+                    android:paddingTop="12dp" android:paddingBottom="12dp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp" android:text="@string/cas_make_button" />
+                <TextView android:id="@+id/checkin_missing"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFD166" />
+                <TextView android:id="@+id/checkin_result"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF" android:textIsSelectable="true"
+                    android:typeface="monospace" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button android:id="@+id/checkin_export_text"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:enabled="false"
+                        android:textSize="12sp" android:text="@string/export_text_button" />
+                    <Button android:id="@+id/checkin_export_pdf"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:enabled="false"
+                        android:textSize="12sp" android:text="@string/export_pdf_button" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/weapons_section"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:paddingTop="8dp"
+                android:visibility="gone">
+                <LinearLayout android:id="@+id/weapons_root"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/gameplan_section"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:paddingTop="4dp"
+                android:visibility="gone">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/gameplan_title" android:textColor="#FFFFFF" android:textSize="15sp" />
+                <LinearLayout android:id="@+id/gameplan_fields"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+                <Button android:id="@+id/gameplan_make"
+                    android:textSize="12sp" android:minHeight="0dp"
+                    android:paddingTop="12dp" android:paddingBottom="12dp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp" android:text="@string/cas_make_button" />
+                <TextView android:id="@+id/gameplan_missing"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFD166" />
+                <TextView android:id="@+id/gameplan_result"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF" android:textIsSelectable="true"
+                    android:typeface="monospace" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button android:id="@+id/gameplan_export_text"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:enabled="false"
+                        android:textSize="12sp" android:text="@string/export_text_button" />
+                    <Button android:id="@+id/gameplan_export_pdf"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:enabled="false"
+                        android:textSize="12sp" android:text="@string/export_pdf_button" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

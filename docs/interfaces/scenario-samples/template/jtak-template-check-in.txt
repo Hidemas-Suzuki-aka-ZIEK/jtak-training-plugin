@@ -1,0 +1,11 @@
+TRAINING USE ONLY / 訓練用
+CHECK-IN (JP 3-09.3 2014 Fig. V-4)
+（未入力）, this is （未入力）
+1 Mission number: （未入力）
+2 Number and type of aircraft: （未入力）
+3 Position and altitude: （未入力）
+4 Ordnance: （未入力）
+5 Playtime: （未入力）
+6 Capabilities: （未入力）
+7 Abort code: （未入力）
+TRAINING USE ONLY / 訓練用

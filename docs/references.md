@@ -1,0 +1,52 @@
+# 出典
+
+- 関連: `docs/usage-scope.md` U4（公開資料だけを使う）
+
+JTAK で使う外部の資料は、**公開されていることを確かめてから**ここに書き、それから使う。
+リークした資料・秘密区分のある文書・出所が不明な資料・非公開の諸元は書かない、使わない。
+
+## 書き方
+
+| 列 | 内容 |
+|---|---|
+| ID | `S1`・`S2`… |
+| 資料 | 題名・版・発行元 |
+| 入手先 | URL か、手元のファイルの場所 |
+| 公開の確認 | 公開されていると確かめた根拠（配布の表示など）と、確かめた日 |
+| 使う場所 | JTAK のどの機能・文書で使うか |
+
+## 使っている資料
+
+| ID | 資料 | 入手先 | 公開の確認 | 使う場所 |
+|---|---|---|---|---|
+| S1 | ATAK-CIV 5.8.0.9 SDK（javadoc・samples） | `ATAK-CIV-5.8.0.9-SDK.zip`（利用者が入手したもの。再配布しない） | 利用者が正規に入手した SDK（2026-11-08） | ビルド（ADR 0002）、LRF の API、プラグインの骨格の API |
+| S2 | T. Vincenty, "Direct and Inverse Solutions of Geodesics on the Ellipsoid with application of nested equations", Survey Review, Vol. XXIII, No. 176, 1975, pp. 88–93 | 学術誌に載った論文（Survey Review） | 公刊された論文。測地の計算の標準的な式として広く引かれている（2026-11-08） | F01 の目標の位置の計算（`docs/detailed-design/01-lrf-marking.md` 3.2）と、F02 の方位と距離の逆解法（`docs/detailed-design/02-cas-brief.md` 2.1）。式だけを使い、論文の文章・図は取り込まない |
+| S3 | Geoscience Australia / ICSM, "Geocentric Datum of Australia Technical Manual"（Vincenty の式の計算の例: Flinders Peak → Buninyong） | Geoscience Australia の公開のウェブサイト（GDA の技術の資料） | オーストラリア政府の機関が一般に公開している資料（2026-11-08） | F01 の試験の値 T2（`docs/detailed-design/01-lrf-marking.md` 3.5）と、F02 の逆解法の試験 C1（`docs/detailed-design/02-cas-brief.md` 2.6）。数値の例だけを使う。楕円体は GRS80 で、WGS84 との差は試験の許容より小さい |
+| S4 | Joint Publication 3-09.3, Close Air Support, 25 November 2014（統合参謀本部） | 利用者が `https://irp.fas.org/doddir/dod/jp3_09_3.pdf`（民間団体 FAS のサイト）から落とした写し。元のチェックアウトの `docs/jp3_09_3.pdf` に置いた（コミットしない） | 本文（PDF の 344 ページ）に「access to unclassified publications is unrestricted」。配布の表示・FOUO は見つからない。置き場所は公式でないが、利用者が U4 の例外として使ってよいと答えた（2026-11-08。`docs/usage-scope.md` Q4）。詳しくは下の候補の表の 2014 年版の行 | F02 の書式の項目・並び・用語の主な出典（図 V-3・V-4・V-9 と第 V 章の節。ゲームプランは、統制の種類と攻撃の方法の説明に図 III-7 と PDF 109–114・III-42–III-47 の節も使う）。全文の非公式の日本語訳（`docs/manuals/jp3-09-3/`。2026-11-09 利用者の決定。`docs/usage-scope.md` Q10）と、取扱説明の用語の出典（`docs/manuals/`） |
+| S5 | Center for Army Lessons Learned（CALL）, No. 24-908, "Airspace as a Weapon", August 2024 | `https://api.army.mil/e2/c/downloads/2024/10/01/f0561feb/24-908-airspace-as-a-weapon-aug-24-public.pdf`（army.mil の公式の置き場所。2026-11-08 に利用者が示した。5,211,701 バイト、SHA-1 `904db77e2673699e2b8b9cd722de783e4450ed72`。リポジトリには入れない） | 表紙（PDF の 1 ページ）と裏表紙（PDF の 42 ページ）に「Approved for Public Release / Distribution Unlimited」。2026-11-08 に利用者の許可を得て一時フォルダに落とし、文字を取り出して確かめた。42 ページ。注意書き（PDF の 3 ページ）に、著者の見解で公式の教範に代わるものではないとある | 補い。空域の統制の用語（ACM・FSCM・coordinating altitude・FSCL・ASOC・JAGIC など。用語集は PDF の 35〜37 ページあたり）と、統合の航空の任務の流れの背景。CAS の書式（9-line・チェックインなど）は載っていないので、書式の項目の出典にはしない。用語が S4 と食い違うときは S4 に従う |
+| S6 | MIL-STD-2525E w/Change 1, Joint Military Symbology, 2 March 2025（国防総省の標準。発行の担当は DISA。MIL-STD-2525E 31 December 2022 に代わるもの） | 国防総省の標準の公式の置き場所 ASSIST（`https://quicksearch.dla.mil/qsDocDetails.aspx?ident_number=114934` の「E Change 1」の行）。15,341,478 バイト、SHA-1 `135bcc54d704e7608928d19e43db2bfcb1e648a8`、749 ページ。リポジトリには入れない | 表紙（PDF の 1 ページ）に「Distribution A: Approved for public release, distribution is unlimited.」。ASSIST の一覧でも Dist Stmt A。2026-11-08 に利用者が版を E Change 1 に決め、PDF を開くことを認めた。同じ日に一時フォルダに落とし、文字を取り出して確かめた。秘密区分・FOUO の表示は見つからなかった。注: 最初に誤って Revision E（2022-12-31）を落とした。その表紙も Distribution A だったが、使わないので消した | F02 の 9-line の 5 行目の下書きの言葉（`docs/usage-scope.md` Q8）。Appendix A の「TABLE A-XXIII Land unit entity/entity type/entity subtype」（A.5.4.6。PDF の 92〜94 ページ、印刷のページ 75〜77）と「TABLE A-XXIX Land equipment entity/entity type/entity subtype」（A.5.4.8。PDF の 101〜104 ページ、印刷のページ 84〜87）の名前（Entity・Entity Type）だけを使う。記号の図・符号の値は取り込まない。E の符号は数字（Entity の値）で、CoT の type の文字の符号（2525B/C の形）との対応表は E にはない。「Armor/Mechanized」は TABLE A-XXIII の文字の取り出しで斜線の前に空白が入ったので、Appendix E の TABLE E-III（PDF の 220 ページ、印刷のページ 203）の書き方を使う |
+| S7 | MIL-STD-2525C, Common Warfighting Symbology, 17 November 2008（国防総省の標準。MIL-STD-2525B w/Change 2 に代わるもの） | 国防総省の標準の公式の置き場所 ASSIST（`https://quicksearch.dla.mil/WMX/Default.aspx?token=3177674`）。12.0 MB、SHA-1 `7d71c30a0e92ed052bcbf5bf7682bb59d37fb321`、1170 ページ。リポジトリには入れない | 表紙（PDF の 1 ページ）に「Distribution A: Approved for public release, distribution is unlimited.」。2026-11-08 に利用者が落とすことを認め（「Cも落として良い」）、一時フォルダに落として文字を取り出し、確かめた | F02 の 9-line の 5 行目の下書きで、CoT の type の文字の符号と名前をつなぐためだけに使う。Appendix A の「TABLE A-III. SIDC table」の地上（Ground track）の部隊（UNT）と装備（EQT）の行の、function ID の文字と名前（PDF の 65〜84 ページ、印刷のページ 59〜78）。CoT の type の、所属（`a-h-`）より後ろの文字を `-` で区切ったものが function ID の文字に当たる（例: `a-h-G-U-C-I` は `S*G*UCI---` の INFANTRY）。ATAK もこの対応を使っている（S1 の `Icon2525cTypeResolver.mil2525cFromCotType`）。下書きの言葉そのものは S6 の名前を使い、2525C の名前は対応を確かめるためだけに使う。記号の図は取り込まない |
+| S8 | Haglöf Vertex Laser Geo2 / Laser Geo2 の取扱説明書（PDF） | `https://cdn.shopify.com/s/files/1/0568/7577/8202/files/Vertex_Laser_Geo2_Laser_Geo2_-_Manual.pdf` | ログインなしで誰でも取れる公開の URL（2026-11-09 に HTTP 200・PDF を確かめた）。置き場所が Haglöf の公式の店かは確かめていない | Geo2 の通信の形と公称の値の確認。機種を選ぶ材料にだけ使い、JTAK の実装には使っていない |
+| S9 | Laser Technology, Inc.（LTI）TruPulse 360 の取扱説明書（PDF） | `https://lasertech.com/wp-content/uploads/LTI-TruPulse-360.4.pdf` | メーカーのサイトで公開（2026-11-09 に HTTP 200・PDF を確かめた） | TruPulse 360 の通信の形と公称の値の確認。使い方は S8 と同じ |
+| S10 | Benewake TF03（180 m 版）のデータシート（販売店の転載） | `https://worldronemarket.com/benewake-tf03-rangefinder-180-m-datasheet/` | 販売店のサイトで公開（2026-11-09 に HTTP 200 を確かめた）。メーカーの原典とは照らしていない | TF03 の値の確認。使い方は S8 と同じ |
+| S11 | JRT Meter Technology の記事「How to connect a Arduino with JRT measure sensor」 | `https://www.jrt-measure.com/news/how-to-connect-a-arduino-with-jrt-measure-sensor-41719.html` | メーカーのサイトで公開（2026-11-09 に HTTP 200 を確かめた） | JRT 703A のつなぎ方の確認。使い方は S8 と同じ |
+| S12 | Lumispot ELRF-E16 の仕様書（PDF） | `https://www.lumispot-tech.com/uploads/ELRF-E16-5km-LRF-Spec.pdf` | メーカーのサイトで公開（2026-11-09 に HTTP 200・PDF を確かめた）。中身が画像で、数値は読めていない | 部品の候補の名前の確認（名前だけ。数値は使わない） |
+| S13 | Hackaday.io のプロジェクト 206686（ESP32 の測距器の作例） | `https://hackaday.io/project/206686` | 公開のウェブページ（2026-11-09 に HTTP 200 を確かめた） | ESP32 の測距器の作例の確認。使い方は S8 と同じ |
+
+## 候補（公開の確認がまだのもの。確かめるまで使わない）
+
+| 候補 | 使う場所 | 確かめること |
+|---|---|---|
+| JP 3-09.3 Joint Close Air Support（統合参謀本部。2019-06-10 版、2021-06-07 に妥当性を確認したと CJCSI 5127.01B にある） | F02 | **使えない（公開を確かめられない）**。2026-11-08 に利用者の Chrome で jcs.mil を開いた。3-0 シリーズの公開の一覧には JP 3-0 しかなく、「A full list of joint doctrine publications may be found on JEL+. (CAC required)」とある。以前の PDF の URL（`/Portals/36/Documents/Doctrine/pubs/jp3_09_3.pdf`）は 404。表紙の配布の表示そのものは見ていない。2003 年版に公開の表示があるという検索の抜粋は確かめておらず、旧版なので根拠にしない |
+| JP 3-09.3 Close Air Support（2009-07-08 版。2019 年版の 2 つ前の旧版）の PDF の写し。利用者が Google の検索で見つけて元のチェックアウトの `docs/jp3_09_3(09c).pdf` に置いた（2026-11-08。コミットしていない） | F02に使えるかは未確認 | **中身の公開の表示は確かめた・置き場所は未確認**。2026-11-08 に本文を読んだ。275 ページ。表紙に配布の表示はない。付録 E の E-2（PDF の 253 ページ）に「Local reproduction is authorized and access to unclassified publications is unrestricted.」とあり、当時は公開の JEL（`http://www.dtic.mil/doctrine`）に置かれていたとある。秘密区分の表示は見つからなかった。落とした URL は Windows の記録（Zone.Identifier）に残っておらず、利用者に確認する。書式の図は「Figure V-12 Close Air Support Check-In Briefing」（V-35）と「Figure V-14 The 9-Line Close Air Support Briefing Form」（V-40）の 2 つ。本文（V-40 の前後）に CAS brief は 9-Line Briefing と同じものとある。ゲームプラン・ルーティング・Restrictions は本文に語として出るが、書式の図はない（中身は読んでいない） |
+| JP 3-09.3 Close Air Support（2014-11-25 版。2019 年版の 1 つ前の旧版）の PDF。利用者が「公式にあった」として元のチェックアウトの `docs/jp3_09_3.pdf` に置いた（2026-11-08。コミットしていない） | F02の主な出典。2026-11-08 に利用者が「2014年版を使う」と決め、irp.fas.org の写しを U4 の例外として使ってよいと答えた（下の注） | **中身の公開の表示は確かめた・置き場所は公式でない**。利用者によると、落とした場所は `https://irp.fas.org`（民間団体 FAS のサイトで、政府の公式サイトではない）。Wayback Machine の記録で、`https://irp.fas.org/doddir/dod/jp3_09_3.pdf` の 2021-09-01・2021-12-31・2022-03-26・2026-10-12 の版の SHA-1（base32 `MQJXN3TMKU3X6AAJMYD4RTDPUTV4BCRO`）が手元の PDF と同じだと確かめた。公式の置き場所だった `www.jcs.mil/Portals/36/Documents/Doctrine/pubs/jp3_09_3.pdf` と `www.dtic.mil/doctrine/new_pubs/jp3_09_3.pdf` には、Wayback Machine に PDF が取れた記録（200）がなく、404 と転送だけだった。公式の置き場所の同じファイルとは照らし合わせられていない。2026-11-08 に本文を読んだ。361 ページ。表紙は「Joint Publication 3-09.3 Close Air Support 25 November 2014」。付録の「5. Distribution of Publications」（PDF の 344 ページ）に「Local reproduction is authorized, and access to unclassified publications is unrestricted.」とある。配布の表示（Distribution Statement）・FOUO の文字は検索で見つからなかった。落とした場所は利用者の答えで irp.fas.org と分かった（上）。図の一覧（PDF の 9 ページ）にある書式の図は次の 3 つ: 「Figure V-3 Example Routing Calls」（V-14。PDF の 231 ページ）、「Figure V-4 Close Air Support Check-In Briefing」（V-16。PDF の 233 ページ）、「Figure V-9 9-Line Close Air Support Brief Format」（V-27。本文は PDF の 242 ページで、図の中の見出しは「Game Plan and CAS 9-Line Briefing」。ゲームプランの行と Remarks/Restrictions の行も同じ図に入っている）。本文には (4) Game Plan・(5) CAS Brief・(6) Remarks/Restrictions の節がある（第 V 章。PDF の 237・241・247 ページあたり）。Restrictions は第 III 章（III-42）にも出る。図の中の項目は読んでいない |
+| JFIRE（ATP 3-09.32 / MCRP 3-31.6 / NTTP 3-09.2 / AFTTP 3-2.6。ALSSA） | F02 | **使えない（配布が制限されている）**。2026-11-08 に利用者の Chrome で `https://www.alssa.mil/mttps/jfire/` を開いた。版は「November 2023」、表示は「Restricted Distribution」、ダウンロードには Intelink Passport の登録が要る |
+| DD Form 1972 Joint Tactical Air Strike Request（国防総省の様式。統合参謀本部の様式） | F02に使えるかは未確認 | **公開は確かめた・中身は未確認**。2026-11-08 に利用者の Chrome で `https://www.esd.whs.mil/Directives/forms/dd1500_1999/` を開いた。一覧の行は「DD1972 Joint Tactical Air Strike Request 5/20/2019 No JOINT STAFF」で、Controlled の列が No（管理された様式ではなく、公式サイトで配られている）。PDF は開いておらず、6 つの書式のどれにあたるか、欄の中身は確かめていない |
+| LTI TruPulse 360i の取扱説明書（販売店の写し `https://geotronics.sk/wp-content/uploads/2020/02/TruPulse-360i-User-Manual-2024.pdf`） | 使っていない | **使わない（置き場所が販売店の写し）**。2026-11-09 に取りに行くと HTTP 466 で、自動の取得を断られた。メーカーの公式の置き場所は確かめていない |
+| LTI TruPulse i 系の通信の仕様書（`https://lasertech.com/wp-content/uploads/trupulse-i-series-communication-protocols-oct-2025.pdf`） | 使っていない | **公開は確かめた・中身は読んでいない**。メーカーのサイトにある。以前は 0 バイトで返ったが、2026-11-09 には HTTP 200・PDF が返った。読むまで使わない |
+
+JP 3-09.3（2019 年版）・JFIRE・DD Form 1972 は 2026-11-08 に検索で見つけ、同じ日に利用者の Chrome で公式サイトを開いて確かめた（見たのは一覧・配布の表示・版だけで、書式の中身は読んでいない）。2009 年版の写しと 2014 年版は、上の行のとおり。
+Scribd・irp.fas.org などの写しは公式の置き場所ではないので候補にしない。ただし 2014 年版は、利用者が irp.fas.org の写しを使うと決めた（2026-11-08）。利用者は、本文に公開の表示があることなどを聞いたうえで、この写しを U4 の例外として使ってよいと答えた（2026-11-08。`docs/usage-scope.md` Q4）。例外はこの 2014 年版の写しだけで、ほかの写しは今までどおり候補にしない。
+JP 3-09.3 を主な出典にするという利用者の決定（2026-11-08）は、2019 年版が公開されていないため、そのままでは進められない。そこで利用者は 2014 年版を使うと決めた（2026-11-08。`docs/usage-scope.md` Q4）。2009 年版の写しは使わない。2014 年版は 6 つの書式（ルーティング・チェックイン・ゲームプラン・CAS Brief・Restrictions・9-line）がすべて図か節に出てくる（本文では CAS brief は 9-line の形で渡す）が、2009 年版の図はチェックインと 9-line だけ。
+
+磁気偏差は Android の公開 API `android.hardware.GeomagneticField` で `app` が求め、`core` に値として渡す（F01）。外部の資料は使わない。
