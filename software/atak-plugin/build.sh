@@ -11,4 +11,4 @@ mkdir -p "$ANDROID_USER_HOME"
 GRADLE_BIN="${JTAK_GRADLE:-$GRADLE_USER_HOME/wrapper/dists/gradle-8.14.3-all/10utluxaxniiv4wxiphsi49nj/gradle-8.14.3/bin/gradle}"
 [[ -x "$GRADLE_BIN" ]] || { echo "Gradle 8.14.3 のローカルキャッシュを用意してください: $GRADLE_BIN" >&2; exit 1; }
 cd "$PLUGIN_ROOT"
-exec "$GRADLE_BIN" --offline --no-daemon "-Duser.home=$REPO_ROOT/out/atak-plugin" "$@"
+exec "$GRADLE_BIN" --offline --no-daemon -Pandroid.builder.sdkDownload=false "-Duser.home=$REPO_ROOT/out/atak-plugin" "$@"

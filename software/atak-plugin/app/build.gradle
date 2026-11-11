@@ -1,23 +1,27 @@
 apply plugin: 'com.android.application'
 ext.ATAK_VERSION = '5.8.0'
-ext.isDevKitEnabled = { false }
-ext.takrepoUrl = 'https://repo.maven.apache.org/maven2'
-ext.takrepoUser = ''
-ext.takrepoPassword = ''
+ext.isDevKitEnabled = rootProject.ext.isDevKitEnabled
+ext.takrepoUrl = rootProject.ext.takrepoUrl
+ext.takrepoUser = rootProject.ext.takrepoUser
+ext.takrepoPassword = rootProject.ext.takrepoPassword
 apply plugin: 'atak-takdev-plugin'
-// takdev 独自の NDK 取得も止め、CI 環境でもローカルの SDK だけを使う。
-// Also disable takdev's own NDK download and use only the local SDK in CI environments.
-tasks.matching { it.name == 'installRequiredNdk' }.configureEach { enabled = false }
+// ローカルでは takdev 独自の NDK 取得も止める。TPP はひな形の動作に従う。
+// Also disable takdev's own NDK download locally. TPP follows the template behavior.
+if (!isDevKitEnabled()) {
+    tasks.matching { it.name == 'installRequiredNdk' }.configureEach { enabled = false }
+}
 
 def local = new Properties()
-rootProject.file('local.properties').withInputStream { local.load(it) }
-def sdkJar = rootProject.file(local.getProperty('jtak.sdk.jar', 'missing-main.jar'))
-if (!sdkJar.isFile()) throw new GradleException('jtak.sdk.jar を local.properties に指定してください')
+def sdkJar
+if (!isDevKitEnabled()) {
+    rootProject.file('local.properties').withInputStream { local.load(it) }
+    sdkJar = rootProject.file(local.getProperty('jtak.sdk.jar', 'missing-main.jar'))
+    if (!sdkJar.isFile()) throw new GradleException('jtak.sdk.jar を local.properties に指定してください')
+}
 
 android {
     namespace 'jp.jtak.plugin'
     compileSdk 36
-    buildToolsVersion '35.0.0'
     defaultConfig {
         applicationId 'jp.jtak.plugin'
         minSdk 31
@@ -30,15 +34,54 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-    signingConfigs.debug.storeFile = rootProject.file('../../out/atak-plugin/.android-home/debug.keystore')
+    signingConfigs {
+        if (isDevKitEnabled()) {
+            debug {
+                storeFile file("${buildDir}/android_keystore")
+                storePassword 'tnttnt'
+                keyAlias 'wintec_mapping'
+                keyPassword 'tnttnt'
+            }
+            release {
+                storeFile file("${buildDir}/android_keystore")
+                storePassword 'tnttnt'
+                keyAlias 'wintec_mapping'
+                keyPassword 'tnttnt'
+            }
+        } else {
+            debug.storeFile = rootProject.file('../../out/atak-plugin/.android-home/debug.keystore')
+        }
+    }
     buildTypes {
-        debug { minifyEnabled false }
-        release { minifyEnabled false }
+        debug {
+            minifyEnabled false
+            matchingFallbacks = ['sdk']
+        }
+        release {
+            minifyEnabled true
+            proguardFile 'proguard-gradle.txt'
+            // ローカル SDK には mapping がない。TPP では takdev が取得してプロパティを設定する。
+            // The local SDK has no mapping. In TPP, takdev fetches it and sets the property.
+            if (isDevKitEnabled()) {
+                proguardFile 'proguard-tpp.txt'
+            }
+            signingConfig isDevKitEnabled() ? signingConfigs.release : signingConfigs.debug
+            matchingFallbacks = ['odk']
+        }
+    }
+    flavorDimensions 'application'
+    productFlavors {
+        civ {
+            dimension 'application'
+            isDefault = true
+        }
     }
     bundle { storeArchive { enable = false } }
     packaging { jniLibs.useLegacyPackaging = true }
 }
 dependencies {
     implementation project(':core')
-    compileOnly files(sdkJar)
+    if (!isDevKitEnabled()) {
+        compileOnly files(sdkJar)
+    }
 }

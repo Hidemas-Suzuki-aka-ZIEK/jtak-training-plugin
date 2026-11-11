@@ -1,0 +1,3 @@
+# ローカル SDK には mapping がない。TPP では takdev が取得し、このプロパティを設定する。
+# The local SDK has no mapping. In TPP, takdev fetches it and sets this property.
+-applymapping <atak.proguard.mapping>

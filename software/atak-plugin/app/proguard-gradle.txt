@@ -1,0 +1,44 @@
+# SDK のひな形に従い、クラスの削除と最適化はせず、名前を難読化・再配置する。
+# Follow the SDK template: obfuscate and repackage names without shrinking or optimization.
+-dontskipnonpubliclibraryclasses
+-dontshrink
+-dontoptimize
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
+-keepattributes *Annotation*
+-keepattributes Signature,InnerClasses
+
+# SDK が難読化を禁じる API と、そのメンバーを保持する。
+# Keep APIs and their members that the SDK marks against obfuscation.
+-keep,allowobfuscation @interface gov.tak.api.annotation.DontObfuscate
+-keep @gov.tak.api.annotation.DontObfuscate class * { *; }
+-keepclassmembers class * {
+    @gov.tak.api.annotation.DontObfuscate *;
+}
+
+# Android・列挙型・ネイティブ・XML の名前による参照を保持する。
+# Keep name-based references for Android, enums, native methods, and XML.
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+-keepclassmembers class * {
+    @org.simpleframework.xml.* *;
+}
+
+# plugin.xml から名前で読み込まれる IPlugin 実装も、ひな形の規則で保持する。
+# The template rules also keep IPlugin implementations loaded by name from plugin.xml.
+-keep class * implements gov.tak.api.plugin.IPlugin { }
+-keep class * extends com.atak.plugins.impl.AbstractPluginTool { }
+-keep class module-info
+
+-repackageclasses atakplugin.JTAK

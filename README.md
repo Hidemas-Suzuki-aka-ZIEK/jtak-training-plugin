@@ -15,6 +15,19 @@ ATAK-CIV 5.8.0.9 のプラグイン。JTAC 役の訓練を助ける。
 - 兵器の加害範囲（編集できる表の訓練用サンプル値）を地図に描く
 - 画面表示（読み上げ用）とテキスト・PDF の書き出し
 
+### インストール
+
+前提: Android の端末に ATAK-CIV 5.8.0.9 が入っていること。
+
+1. [Releases](https://github.com/Hidemas-Suzuki-aka-ZIEK/jtak-training-plugin/releases) から `JTAK-0.1.0-civ-release.apk` を取る。
+   SHA-256 がリリースの説明に書いた値と同じかを確かめる（例: `sha256sum JTAK-0.1.0-civ-release.apk`）。
+2. 自分でビルドした JTAK（debug 版など）が入っていれば、先にアンインストールする。署名が違うので、上から入れられない（`INSTALL_FAILED_UPDATE_INCOMPATIBLE`）。
+3. APK を端末に入れる。端末のファイルマネージャーで APK を開くか、PC から `adb install JTAK-0.1.0-civ-release.apk` を実行する。
+4. ATAK を開き、「ツール」→「プラグイン」→「TAKアプリ & プラグイン」の一覧で JTAK を読み込む（チェックを入れる）。
+
+この APK は、TAK.gov の Third Party Pipeline（TPP）でビルドし、TAK Product Center の未承認プラグイン用の鍵（ATAK Untrusted Plugin Release）で署名されている。
+リリース版の ATAK で読み込めることは、まだ実機で確かめていない（`docs/usage-scope.md` Q5）。
+
 ### ビルド
 
 前提: Linux、JDK 17、Android SDK（platform 36・build-tools 35.0.0）、
@@ -26,6 +39,7 @@ bash tools/sdk/setup-sdk.sh                                  # SDK を out/sdk/ 
 bash software/atak-plugin/build.sh assembleDebug :core:test  # APK を作り、core の試験を走らせる
 ```
 
+TPP に出すときの zip の作り方は `software/atak-plugin/README.md` にある。
 SDK の jar・keystore はリポジトリに入れない（再配布になるため）。詳細は ADR 0002（`docs/decisions/0002-build-environment.md`）。
 
 ### ディレクトリ
@@ -55,6 +69,19 @@ A plugin for ATAK-CIV 5.8.0.9 that supports training in the JTAC role.
 
 The documents under `docs/` are written in Japanese.
 
+### Install
+
+Requirement: ATAK-CIV 5.8.0.9 installed on your Android device.
+
+1. Download `JTAK-0.1.0-civ-release.apk` from [Releases](https://github.com/Hidemas-Suzuki-aka-ZIEK/jtak-training-plugin/releases).
+   Check that its SHA-256 matches the value in the release notes (for example, `sha256sum JTAK-0.1.0-civ-release.apk`).
+2. If you have a JTAK build that you built yourself (such as a debug build), uninstall it first. The signatures differ, so the release APK cannot be installed over it (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`).
+3. Install the APK: open it with the device's file manager, or run `adb install JTAK-0.1.0-civ-release.apk` from a PC.
+4. Open ATAK, go to the plugin list from the Tools menu, and load JTAK (check its box).
+
+This APK was built by the TAK.gov Third Party Pipeline (TPP) and signed with the TAK Product Center key for untrusted plugins (ATAK Untrusted Plugin Release).
+Loading it in release ATAK has not yet been confirmed on a device (`docs/usage-scope.md` Q5).
+
 ### Build
 
 Requirements: Linux, JDK 17, Android SDK (platform 36, build-tools 35.0.0),
@@ -66,6 +93,7 @@ bash tools/sdk/setup-sdk.sh                                  # Extract the SDK i
 bash software/atak-plugin/build.sh assembleDebug :core:test  # Build the APK and run the core tests
 ```
 
+How to package the source for the TPP is described in `software/atak-plugin/README.md` (in Japanese).
 The SDK jars and keystore are not committed to the repository, because that would be redistribution. See ADR 0002 (`docs/decisions/0002-build-environment.md`) for details.
 
 ### Directories

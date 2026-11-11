@@ -1,19 +1,47 @@
 buildscript {
     def local = new Properties()
     def config = file('local.properties')
+    if (config.isFile() && config.canRead()) {
+        config.withReader { local.load(it) }
+    }
+    // SDK のひな形と同じく、プロジェクトのプロパティをローカル設定より優先する。
+    // As in the SDK template, prefer project properties over local settings.
+    def getProperty = { name, defaultValue ->
+        def value = project.properties[name] ?: local.getProperty(name)
+        return value == null ? defaultValue : value
+    }
+    ext.isDevKitEnabled = { -> getProperty('takrepo.url', null) != null }
+    ext.takrepoUrl = getProperty('takrepo.url', 'https://localhost/')
+    ext.takrepoUser = getProperty('takrepo.user', 'invalid')
+    ext.takrepoPassword = getProperty('takrepo.password', 'invalid')
     def setupHelp = 'software/atak-plugin/README.md の 2 章に従って local.properties を用意してください。'
-    if (!config.isFile()) {
+    if (!isDevKitEnabled() && !config.isFile()) {
         throw new GradleException("local.properties がありません。${setupHelp}")
     }
-    config.withInputStream { local.load(it) }
     def takdevPath = local.getProperty('jtak.takdev.jar')
-    if (!takdevPath?.trim() || !file(takdevPath).isFile()) {
+    if (!isDevKitEnabled() && (!takdevPath?.trim() || !file(takdevPath).isFile())) {
         throw new GradleException("jtak.takdev.jar に既存の jar ファイルを指定してください。${setupHelp}")
     }
-    repositories { google(); mavenCentral() }
+    repositories {
+        google()
+        mavenCentral()
+        if (isDevKitEnabled()) {
+            maven {
+                url = takrepoUrl
+                credentials {
+                    username = takrepoUser
+                    password = takrepoPassword
+                }
+            }
+        }
+    }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.13.0'
-        classpath files(takdevPath)
+        if (isDevKitEnabled()) {
+            classpath 'com.atakmap.gradle:atak-gradle-takdev:3.+'
+        } else {
+            classpath files(takdevPath)
+        }
     }
 }
 allprojects {
