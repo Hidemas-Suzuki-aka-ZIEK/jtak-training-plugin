@@ -26,7 +26,7 @@ ATAK-CIV 5.8.0.9 のプラグイン。JTAC 役の訓練を助ける。
 4. ATAK を開き、「ツール」→「プラグイン」→「TAKアプリ & プラグイン」の一覧で JTAK を読み込む（チェックを入れる）。
 
 この APK は、TAK.gov の Third Party Pipeline（TPP）でビルドし、TAK Product Center の未承認プラグイン用の鍵（ATAK Untrusted Plugin Release）で署名されている。
-リリース版の ATAK で読み込めることは、まだ実機で確かめていない（`docs/usage-scope.md` Q5）。
+署名を確かめるリリース版の ATAK で読み込めることを、実機で確かめた（`docs/usage-scope.md` Q5）。
 
 ### ビルド
 
@@ -80,7 +80,7 @@ Requirement: ATAK-CIV 5.8.0.9 installed on your Android device.
 4. Open ATAK, go to the plugin list from the Tools menu, and load JTAK (check its box).
 
 This APK was built by the TAK.gov Third Party Pipeline (TPP) and signed with the TAK Product Center key for untrusted plugins (ATAK Untrusted Plugin Release).
-Loading it in release ATAK has not yet been confirmed on a device (`docs/usage-scope.md` Q5).
+Loading it in a signature-checking release build of ATAK has been confirmed on a device (`docs/usage-scope.md` Q5).
 
 ### Build
 
